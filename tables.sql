@@ -1,122 +1,64 @@
 USE aerolinea;
 GO
 
-/*CREATE TABLE name(
-    id_name INT IDENTITY(1, 1) PRIMARY KEY
-);*/
-
-create table cliente(
-	idCliente int,
-	cedula int not null,
-	nombre varchar(50) not null,
-	apellido varchar(50) not null,
-	fechaNacimiento date not null,
+CREATE TABLE cliente (
+	id_cliente INT IDENTITY(1, 1) PRIMARY KEY,
+	cedula INT NOT NULL,
+	nombre VARCHAR(50) NOT NULL,
+	apellido VARCHAR(50) NOT NULL,
+	fecha_nacimiento date NOT NULL,
+	telefono INT NOT NULL,
+	email VARCHAR(20) NOT NULL
 );
 
-/*no requiere piloto de momento por que tiene los mimso datos que empleado y cliente si tiene los datos diferetes*/
-Create Table empleado(
-	idEmpleado int,
-	cedula int not null,
-	nombre varchar(50) not null,
-	apellido varchar(50) not null,
-	fechaContratacion date not null,
-	tipoEmpleado_id int
+CREATE TABLE reserva_boleto (
+	id_reserva_boleto INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+	numero_boleto INT NOT NULL, 
+	fecha_reserva INT NOT NULL,	
+	id_vuelo INT NOT NULL,
 );
 
-create table tipoEmpleado(
-	idTipoEmpleado int,
-	tipoEmpleado varchar(30)
+CREATE TABLE boleto (
+	id_boleto INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+	id_reserva VARCHAR(20),
+	precio money NOT NULL,
+	fecha_emision Date
 );
 
-create table avion(
-	idAvion int not null,
-	modelo varchar(20) not null,
-	capacidadAsientos int,
-	añoFabricacion date
+CREATE TABLE equipaje (
+	id_equipaje INT PRIMARY KEY,
+	id_cliente INT,
+	no_vuelo INT
+	peso INT
+	no_boleto
+
+)
+
+
+CREATE TABLE estado_vuelo (
+	id_estado_vuelo INT PRIMARY KEY,
+	nombre_estado VARCHAR(20) NOT NULL,
 );
 
-create table sede(
-	idSede int not null,
-	nombreSede varchar(30),
-	dirreccion varchar(30)
-);
-create table pais(
-	idPais int not null, 
-	nombrePais varchar(20),
-	codigoPais varchar(20)
-);
-
-create table fecha(
-	 idFecha int not null,
-	 fecha date
-);
-
-create table dirrecion(
-	 idDireccion int not null,
-	 calle varchar(20),
-	 ciudad varchar(20),
-	 codigoPostal varchar(20)
-);
-
-
-create table tarifa(
-	idTarifa int not null,
-	tipoTarifa varchar(20),
-	precioBase int not null
-);
-
-create table reservaBoleto(
-	idReservaBoleto int not null,
-	numeroBoleto int not null, 
-	idFecha int not null,	
-	idVuelo int not null,
-);
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+CREATE TABLE tipo_vuelo (
+	id_tipo_vuelo INT PRIMARY KEY,
+	nombre_vuelo VARCHAR(20),
+)
 
 /*Esta es la tabla que contiene la regla del negocio y la relacion de muchas tablas*/
-create table vuelo(
-	idVuelo int not null,
-	numeroVuelo int not null,
-	horaSalida time not null,
-	horaLlegada time,
-	idEmpleado int,
-	idCliente int,
-	idAvion int, 
+CREATE TABLE vuelo(
+	id_vuelo INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+	numero_vuelo INT NOT NULL,
+	id_avion INT,
+	id_destino_origen INT,
+	id_destino_llegada INT,
+	fecha_hora_salida DATETIME,
+	fecha_hora_llegada DATETIME,
+	duracion_vuelo INT,
+	id_estado_vuelo INT,
+	id_tipo_vuelo INT,
 
+	CONSTRAINT FOREIGN KEY (id_estado_vuelo) REFERENCES estado_vuelo(id_estado_vuelo),
+	CONSTRAINT FOREIGN KEY (id_tipo_vuelo) REFERENCES tipo_vuelo(id_tipo_vuelo),
+	CONSTRAINT FOREIGN KEY (id_avion) REFERENCES avion(id_avion)
 );		
-
