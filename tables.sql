@@ -1,14 +1,9 @@
-USE aerolinea;
-GO
+use master;
+drop database if exists aerolinea;
+create database aerolinea;
+use aerolinea;
+go
 
-CREATE TABLE equipaje (
-	id_equipaje INT PRIMARY KEY,
-	id_cliente INT,
-	peso INT NOT NULL,
-	-- no_boleto
-
-	CONSTRAINT FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
-)
 CREATE TABLE cliente (
 	id_cliente INT IDENTITY(1, 1) PRIMARY KEY,
 	cedula INT NOT NULL,
@@ -19,23 +14,30 @@ CREATE TABLE cliente (
 	email VARCHAR(20) NOT NULL
 );
 
+CREATE TABLE equipaje (
+	id_equipaje INT PRIMARY KEY,
+	id_cliente INT,
+	peso INT NOT NULL,
+	-- no_boleto
+
+	
+);
+
+
 CREATE TABLE reserva (
-	id_reserva_boleto INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+	id_reserva INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 	id_cliente INT, 
 	fecha_reserva INT NOT NULL,	
+	
 
-	CONSTRAINT FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
-
+	 
 );
 
 CREATE TABLE boleto (
 	id_boleto INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
-	id_reserva VARCHAR(20),
+	id_reserva int,
 	precio money NOT NULL,
-	fecha_emision Date,
-
-	CONSTRAINT FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
-
+	fecha_emision Date
 );
 
 -----------------
@@ -63,10 +65,8 @@ CREATE TABLE tripulacion (
     id_empleado INT,
     id_tipo_empleado INT,
 
-    CONSTRAINT FOREIGN KEY (id_tipo_empleado) REFERENCES tipo_empleado(id_tipo_empleado),
-    CONSTRAINT FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado)
-
-)
+	
+);
 
 -- relacionado al avion
 
@@ -81,9 +81,8 @@ CREATE TABLE avion(
 	modelo VARCHAR(20) NOT NULL,
 	cantidad_asientos INT NOT NULL,
 	fabrication_year date NOT NULL,
-	id_estado_avion INT NO NULL,
+	id_estado_avion INT NOT NULL
 
-	CONSTRAINT FOREIGN KEY (id_estado_avion) REFERENCES estado_avion(id_estado_avion)
 );
 
 
@@ -101,9 +100,6 @@ CREATE TABLE pais(
 	nombre_pais VARCHAR(20) NOT NULL,
 	codigo_pais VARCHAR(20) NOT NULL,
 	id_direccion INT,
-
-	CONSTRAINT FOREIGN KEY (id_direccion) REFERENCES direccion(id_direccion)
-
 );
 
 CREATE TABLE destino (
@@ -111,10 +107,7 @@ CREATE TABLE destino (
 	nombre VARCHAR(50) NOT NULL,
 	codigo_IATA CHAR(3) NOT NULL,
 	id_pais INT,
-
-	CONSTRAINT FOREIGN KEY (id_pais) REFERENCES pais(id_pais)
-)
-
+);
 
 /*Esta es la tabla que contiene la regla del negocio y la relacion de muchas tablas*/
 CREATE TABLE estado_vuelo (
@@ -124,7 +117,7 @@ CREATE TABLE estado_vuelo (
 
 CREATE TABLE tipo_vuelo (
 	id_tipo_vuelo INT PRIMARY KEY,
-	nombre_vuelo VARCHAR(20),
+	nombre_vuelo VARCHAR(20)
 );
 
 CREATE TABLE vuelo(
@@ -139,13 +132,44 @@ CREATE TABLE vuelo(
 	fecha_hora_llegada DATETIME,
 	duracion_vuelo INT NOT NULL,
 	id_estado_vuelo INT,
-	id_tipo_vuelo INT,
-
-	CONSTRAINT FOREIGN KEY (id_tripulacion) REFERENCES tripulacion(id_tripulacion),
-	CONSTRAINT FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva),
-	CONSTRAINT FOREIGN KEY (id_avion) REFERENCES avion(id_avion),
-	CONSTRAINT FOREIGN KEY (id_destino_origen) REFERENCES destino(id_destino),
-	CONSTRAINT FOREIGN KEY (id_destino_llegada) REFERENCES destino(id_destino),
-	CONSTRAINT FOREIGN KEY (id_estado_vuelo) REFERENCES estado_vuelo(id_estado_vuelo),
-	CONSTRAINT FOREIGN KEY (id_tipo_vuelo) REFERENCES tipo_vuelo(id_tipo_vuelo),
+	id_tipo_vuelo INT
 );		
+
+--tiene la relacion de equipaje con cliente{
+alter table equipaje add FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente);
+--}
+
+--reserva a cliente
+alter table reserva add FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+--}
+
+--tripulacion con tipo_empleado y empleado{
+alter table tripulacion add FOREIGN KEY (id_tipo_empleado) REFERENCES tipo_empleado(id_tipo_empleado);
+alter table tripulacion add FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado);
+--}
+
+--{ destíno pais
+alter table destino add FOREIGN KEY (id_pais) REFERENCES pais(id_pais);
+--}
+
+--{pais dirrecion
+alter table pais add FOREIGN KEY (id_direccion) REFERENCES direccion(id_direccion);
+--}
+
+--{avion
+alter table avion add FOREIGN KEY (id_estado_avion) REFERENCES estado_avion(id_estado_avion);
+--}
+
+--{boleto
+alter table boleto add FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva);
+--}
+
+--vuelo con las otras tablas{
+alter table vuelo add FOREIGN KEY (id_tripulacion) REFERENCES tripulacion(id_tripulacion);
+alter table vuelo add FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva);
+alter table vuelo add FOREIGN KEY (id_avion) REFERENCES avion(id_avion);
+alter table vuelo add FOREIGN KEY (id_destino_origen) REFERENCES destino(id_destino);
+alter table vuelo add FOREIGN KEY (id_destino_llegada) REFERENCES destino(id_destino);
+alter table vuelo add FOREIGN KEY (id_estado_vuelo) REFERENCES estado_vuelo(id_estado_vuelo);
+alter table vuelo add FOREIGN KEY (id_tipo_vuelo) REFERENCES tipo_vuelo(id_tipo_vuelo);
+--}
