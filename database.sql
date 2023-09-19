@@ -1,7 +1,6 @@
 -- tira la tabla si existe
 
-USE master;
-ALTER DATABASE aerolinea SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+go 
 DROP DATABASE IF EXISTS aerolinea;
 GO
 
