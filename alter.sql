@@ -74,3 +74,80 @@ ADD CONSTRAINT CHK_FechaHoraSalida
 CHECK (fechaSalida >= GETDATE());
 
 
+/*
+--tiene la relacion de equipaje con cliente{
+alter table
+  equipaje
+add
+  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente);
+--}
+  --reserva a cliente
+alter table
+  reserva
+add
+  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente) --}
+  --tripulacion con tipo_empleado y empleado{
+alter table
+  tripulacion
+add
+  FOREIGN KEY (id_tipo_empleado) REFERENCES tipo_empleado(id_tipo_empleado);
+alter table
+  tripulacion
+add
+  FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado);
+--}
+  --{ dest�no pais
+alter table
+  destino
+add
+  FOREIGN KEY (id_pais) REFERENCES pais(id_pais);
+--}
+  --{pais dirrecion
+alter table
+  pais
+add
+  FOREIGN KEY (id_direccion) REFERENCES direccion(id_direccion);
+--}
+  --{avion
+alter table
+  avion
+add
+  FOREIGN KEY (id_estado_avion) REFERENCES estado_avion(id_estado_avion);
+--}
+  --{boleto
+alter table
+  boleto
+add
+  FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva);
+--}
+  --vuelo con las otras tablas{
+alter table
+  vuelo
+add
+  FOREIGN KEY (id_tripulacion) REFERENCES tripulacion(id_tripulacion);
+alter table
+  vuelo
+add
+  FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva);
+alter table
+  vuelo
+add
+  FOREIGN KEY (id_avion) REFERENCES avion(id_avion);
+alter table
+  vuelo
+add
+  FOREIGN KEY (id_destino_origen) REFERENCES destino(id_destino);
+alter table
+  vuelo
+add
+  FOREIGN KEY (id_destino_llegada) REFERENCES destino(id_destino);
+alter table
+  vuelo
+add
+  FOREIGN KEY (id_estado_vuelo) REFERENCES estado_vuelo(id_estado_vuelo);
+alter table
+  vuelo
+add
+  FOREIGN KEY (id_tipo_vuelo) REFERENCES tipo_vuelo(id_tipo_vuelo);
+--}
+*/

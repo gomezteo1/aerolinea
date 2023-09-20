@@ -1,0 +1,115 @@
+
+Pilotos
+
+Atributos: ID de piloto, nombre, apellido, licencia de piloto.
+Relaciones: Asociado a la entidad Vuelo como piloto asignado.
+
+Empleados
+
+Atributos: ID de empleado, nombre, apellido, fecha de contrataci�n.
+Relaciones: Puede tener una relaci�n con la entidad Aerol�nea como empleado de la aerol�nea.
+
+Tipo de Empleados
+
+Atributos: ID de tipo de empleado, nombre del tipo (por ejemplo, piloto, asistente de vuelo, personal de tierra).
+Relaciones: Puede estar relacionado con la entidad Empleados para determinar la funci�n de un empleado espec�fico.
+
+Avi�n
+
+Atributos: ID de avi�n, modelo, capacidad de asientos, a�o de fabricaci�n.
+Relaciones: Asociado a Vuelo para identificar la aeronave asignada a un vuelo.
+
+Sede
+
+Atributos: ID de sede, nombre de la sede, direcci�n.
+Relaciones: Puede estar relacionado con Empleados para identificar la ubicaci�n de la oficina principal.
+
+Pa�s
+
+Atributos: ID de pa�s, nombre del pa�s, c�digo de pa�s.
+Relaciones: Puede estar relacionado con Sede para determinar el pa�s de ubicaci�n de una sede.
+
+Fecha
+
+Atributos: ID de fecha, fecha (para llevar un registro de fechas importantes).
+Relaciones: Puede estar relacionado con diversas entidades para registrar fechas relevantes, como fechas de vuelos o fechas de mantenimiento.
+
+Direcci�n
+
+Atributos: ID de direcci�n, calle, ciudad, c�digo postal.
+Relaciones: Puede estar relacionado con Empleados o Sedes para almacenar informaci�n de direcci�n.
+
+Vuelo
+
+Atributos: ID de vuelo, n�mero de vuelo, hora de salida, hora de llegada.
+Relaciones: Se relaciona con Pilotos, Avi�n, Historia de Vuelo, Reserva/Boletos, entre otros, para gestionar la informaci�n de vuelos.
+
+Aerol�nea
+
+Atributos: ID de aerol�nea, nombre de la aerol�nea, c�digo IATA.
+Relaciones: Puede estar relacionada con Vuelo y Empleados para identificar la aerol�nea responsable de un vuelo y el personal que trabaja en ella.
+
+Tarifa/Precio
+
+Atributos: ID de tarifa/precio, tipo de tarifa, precio base.
+Relaciones: Se relaciona con Vuelo para definir las tarifas aplicables a los vuelos.
+
+Reserva/Boletos
+
+Atributos: ID de reserva, n�mero de boleto, fecha de reserva.
+Relaciones: Est� relacionado con Vuelo, Cliente, Equipaje y Tarifa/Precio para gestionar las reservas de vuelos y los boletos emitidos.
+
+Equipaje
+
+Atributos: ID de equipaje, peso, contenido.
+Relaciones: Relacionado con Reserva/Boletos para asociar el equipaje con una reserva espec�fica.
+
+Documento de Viaje
+
+Atributos: ID de documento, tipo de documento, n�mero de documento, fecha de vencimiento.
+Relaciones: Puede estar relacionado con Cliente para almacenar informaci�n de documentos de identificaci�n.
+
+Servicio a Bordo
+
+Atributos: ID de servicio a bordo, tipo de servicio, descripci�n.
+Relaciones: Se relaciona con Vuelo para definir los servicios disponibles durante el vuelo.
+
+Pol�tica de Cancelaci�n
+
+Atributos: ID de pol�tica de cancelaci�n, condiciones de cancelaci�n, tarifas de cancelaci�n.
+Relaciones: Puede estar relacionado con Vuelo y Reserva/Boletos para aplicar pol�ticas de cancelaci�n.
+
+Programa de Lealtad
+
+Atributos: ID de programa, nombre del programa, beneficios.
+Relaciones: Puede estar relacionado con Cliente para rastrear la membres�a en programas de lealtad.
+
+Servicio al Cliente
+
+Atributos: ID de servicio al cliente, nombre, n�mero de contacto.
+Relaciones: Puede estar relacionado con Cliente para gestionar el servicio al cliente y las consultas.
+
+Medida de Seguridad
+
+Atributos: ID de medida de seguridad, descripci�n de la medida, fecha de implementaci�n.
+Relaciones: Puede estar relacionado con Vuelo para registrar medidas de seguridad espec�ficas.
+
+Tripulaci�n
+
+Atributos: ID de tripulaci�n, funci�n, nombre de miembros de la tripulaci�n.
+Relaciones: Est� relacionado con Vuelo para asignar miembros de la tripulaci�n a vuelos espec�ficos.
+
+Mantenimiento
+
+Atributos: ID de mantenimiento, tipo de mantenimiento, fecha de mantenimiento.
+Relaciones: Se relaciona con Avi�n para gestionar el mantenimiento de las aeronaves.
+
+Historia de Vuelo
+
+Atributos: ID de historia de vuelo, registros de vuelo anteriores.
+Relaciones: Est� relacionado con Vuelo para mantener un historial de vuelos previos.
+
+PQRS (Peticiones, Quejas, Reclamos y Sugerencias)
+
+Atributos: ID de PQRS, tipo de PQRS, descripci�n.
+Relaciones: Puede estar relacionado con Cliente para registrar las interacciones de los clientes con la aerol�nea. */
