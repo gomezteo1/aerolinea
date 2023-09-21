@@ -64,9 +64,9 @@ INSERT INTO
 VALUES
   (
     1231234210,
-    "Gustavo",
-    "Rodriguez",
-    "1987-08-11",
+    'Gustavo',
+    'Rodriguez',
+    '1987-08-11',
     45.0,
     300604231
   );
@@ -83,9 +83,9 @@ INSERT INTO
 VALUES
   (
     1231230640,
-    "Maria",
-    "Lopez",
-    "1977-06-08",
+    'Maria',
+    'Lopez',
+    '1977-06-08',
     66.0,
     305864231
   );
@@ -244,51 +244,51 @@ VALUES
 
 -- INSERTS tripulacion
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (1, 1, 1);
+  (1, 1);
 
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (2, 2, 2);
+  (2, 2);
 
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (3, 3, 2);
+  (3, 2);
 
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (4, 4, 3);
+  (4, 3);
 
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (5, 5, 3);
+  (5, 3);
 
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (6, 6, 4);
+  (6, 4);
 
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (7, 7, 4);
+  (7, 4);
 
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (8, 8, 5);
+  (8, 5);
 
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (9, 9, 6);
+  (9, 6);
 
 INSERT INTO
-  tripulacion (id_tripulacion, id_empleado, id_tipo_empleado)
+  tripulacion (id_empleado, id_tipo_empleado)
 VALUES
-  (10, 10, 7);
+  (10, 7);

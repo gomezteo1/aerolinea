@@ -2,80 +2,80 @@ USE aerolinea
 
 -- INSERTS estado_vuelo
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (1, 'Programado');
+  ('Programado');
 
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (2, 'En Curso');
+  ('En Curso');
 
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (3, 'Retrasado');
+  ('Retrasado');
 
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (4, 'Cancelado');
+  ('Cancelado');
 
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (5, 'Completado');
+  ('Completado');
 
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (6, 'Desviado');
+  ('Desviado');
 
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (7, 'En Espera');
+  ('En Espera');
 
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (8, 'En Mantenimiento');
+  ('En Mantenimiento');
 
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (9, 'En Reparación');
+  ('En Reparación');
 
 INSERT INTO
-  estado_vuelo (id_estado_vuelo, nombre_estado)
+  estado_vuelo (nombre_estado)
 VALUES
-  (10, 'Despegado');
+  ('Despegado');
 
 -- INSERTS tipo_vuelo
 INSERT INTO
-  tipo_vuelo (id_tipo_vuelo, nombre_vuelo)
+  tipo_vuelo (nombre_vuelo)
 VALUES
-  (1, 'Vuelo Doméstico');
+  ('Vuelo Doméstico');
 
 INSERT INTO
-  tipo_vuelo (id_tipo_vuelo, nombre_vuelo)
+  tipo_vuelo (nombre_vuelo)
 VALUES
-  (2, 'Vuelo Internacional');
+  ('Vuelo Internacional');
 
 INSERT INTO
-  tipo_vuelo (id_tipo_vuelo, nombre_vuelo)
+  tipo_vuelo (nombre_vuelo)
 VALUES
-  (3, 'Vuelo de Carga');
+  ('Vuelo de Carga');
 
 INSERT INTO
-  tipo_vuelo (id_tipo_vuelo, nombre_vuelo)
+  tipo_vuelo (nombre_vuelo)
 VALUES
-  (4, 'Vuelo Charter');
+  ('Vuelo Charter');
 
 INSERT INTO
-  tipo_vuelo (id_tipo_vuelo, nombre_vuelo)
+  tipo_vuelo (nombre_vuelo)
 VALUES
-  (5, 'Vuelo de Conexión');
+  ('Vuelo de Conexión');
 
 -- INSERTS vuelo
 INSERT INTO
