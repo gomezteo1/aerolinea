@@ -4,7 +4,6 @@ create database aerolinea;
 use aerolinea;
 go
 
-<<<<<<< HEAD
 
 CREATE TABLE pasajero (
   id_pasajero INT IDENTITY(1, 1) PRIMARY KEY,
@@ -211,4 +210,3 @@ alter table vuelo add FOREIGN KEY (id_destino_llegada) REFERENCES destino(id_des
 alter table vuelo add FOREIGN KEY (id_estado_vuelo) REFERENCES estado_vuelo(id_estado_vuelo);
 alter table vuelo add FOREIGN KEY (id_tipo_vuelo) REFERENCES tipo_vuelo(id_tipo_vuelo);
 --}
->>>>>>> refs/remotes/origin/main
