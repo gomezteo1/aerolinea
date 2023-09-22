@@ -1,3 +1,7 @@
+USE aerolinea
+
+-- CHECKS
+
 --cliente restrincion
 ALTER TABLE cliente
 ADD CONSTRAINT chk_cedula
@@ -72,6 +76,10 @@ CHECK (precioVuelo >= 0);
 ALTERTABLE vuelo
 ADD CONSTRAINT CHK_FechaHoraSalida
 CHECK (fechaSalida >= GETDATE());
+
+
+
+
 
 
 /*
