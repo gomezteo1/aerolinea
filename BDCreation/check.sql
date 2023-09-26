@@ -1,8 +1,4 @@
-USE aerolinea
-
--- CHECKS
-
---cliente restrincion
+--cliente 
 ALTER TABLE cliente
 ADD CONSTRAINT chk_cedula
 CHECK (cedula > 1);
@@ -23,8 +19,6 @@ ALTER TABLE cliente
 ADD CONSTRAINT chk_apellido
 CHECK (apellido NOT like '%[^A-Za-z ]%');
 
-
-
 -----equipaje
 
 alter table equipaje 
@@ -38,21 +32,20 @@ ADD CONSTRAINT chk_fecha_reserva
 CHECK (fecha_reserva >= GETDATE());
 
 ALTER TABLE reserva
-ADD CONSTRAINT CHK_EstadoReserva
-CHECK (estadoReserva IN ('confirmada', 'pendiente'));
+ADD CONSTRAINT chk_estado_reserva
+CHECK (fecha_reserva IN ('confirmada', 'pendiente'));
 
 ALTER TABLE reserva
-ADD CONSTRAINT CHK_FechaYEstadoReserva
-CHECK (fechaReserva >= GETDATE() AND estadoReserva IN ('confirmada', 'pendiente'));
+ADD CONSTRAINT chk_reserva_fecha
+CHECK (fecha_reserva >= GETDATE() AND estado_reserva IN ('confirmada', 'pendiente'));
 
 ALTER TABLE reserva
-ADD CONSTRAINT CHK_FechaYEstadoReserva2
-CHECK (estadoReserva IN ('confirmada', 'pendiente'));
+ADD CONSTRAINT chk_fecha_estado_reserva
+CHECK (estado_reserva IN ('confirmada', 'pendiente'));
 
 ALTER TABLE empleado
 ADD CONSTRAINT chk_cedula 
 CHECK (cedula > 1);
-
 
 ----------- empleados
 
@@ -64,20 +57,18 @@ ALTER TABLE empleado
 ADD CONSTRAINT chk_apellido
 CHECK (apellido NOT like '%[^A-Za-z ]%');
 
-
-
 --------------Vuelo
 
 ALTER TABLE vuelo
-ADD CONSTRAINT chk_CapacidadMaxima
-CHECK (CapacidadMaxima > 0);
+ADD CONSTRAINT chk_capacidad_maxima
+CHECK (cantidad_asientos > 0);
+
+ALTER TABLE boleto
+ADD CONSTRAINT chk_precio_vuelo
+CHECK (precio >= 0);
 
 ALTER TABLE vuelo
-ADD CONSTRAINT chk_precioVuelo
-CHECK (precioVuelo >= 0);
-
-ALTER TABLE vuelo
-ADD CONSTRAINT chk_fechaHoraSalida
-CHECK (fechaSalida >= GETDATE());
+ADD CONSTRAINT chk_fecha_hora_salida
+CHECK (fecha_salida >= GETDATE());
 
 

@@ -34,6 +34,7 @@ CREATE TABLE
     id_reserva INT IDENTITY (1, 1) PRIMARY KEY,
     id_cliente INT,
     fecha_reserva DATE NOT NULL,
+    estado_reserva varchar(2)
   );
 
 CREATE TABLE
