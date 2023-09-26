@@ -6,13 +6,20 @@ ALTER TABLE equipaje
 ADD CONSTRAINT FK_equipaje_cliente
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 
+--------------reserva
+
 ALTER TABLE reserva
 ADD CONSTRAINT FK_reserva_cliente
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 
+---------------boleto
+
 ALTER TABLE boleto
 ADD CONSTRAINT FK_boleto_reserva
 FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
+
+
+----------------tripulacion
 
 ALTER TABLE tripulacion
 ADD CONSTRAINT FK_tripulacion_empleado
@@ -22,18 +29,25 @@ ALTER TABLE tripulacion
 ADD CONSTRAINT FK_tripulacion_tipo_empleado
 FOREIGN KEY (id_tipo_empleado) REFERENCES tipo_empleado(id_tipo_empleado)
 
+-----------------avion
+
 ALTER TABLE avion
 ADD CONSTRAINT FK_avion_estado_avion
 FOREIGN KEY (id_estado_avion) REFERENCES estado_avion(id_estado_avion)
 
+-----------------pais
 
 ALTER TABLE pais
 ADD CONSTRAINT FK_pais_direccion
 FOREIGN KEY (id_direccion) REFERENCES direccion(id_direccion)
 
+----------------destino
+
 ALTER TABLE destino
 ADD CONSTRAINT FK_destino_pais
 FOREIGN KEY (id_pais) REFERENCES pais(id_pais)
+
+----------------vuelo
 
 ALTER TABLE vuelo
 ADD CONSTRAINT FK_vuelo_tripulacion
