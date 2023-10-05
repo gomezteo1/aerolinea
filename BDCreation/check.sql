@@ -5,7 +5,7 @@ CHECK (cedula > 1);
 
 alter table cliente 
 ADD CONSTRAINT chk_fechaNacimiento
-Check (fecha_nacimiento >= 18);
+Check (DATEDIFF(year,fecha_nacimiento,GETDATE()) >= 18);
 
 alter table cliente
 add constraint chk_telefono
@@ -57,9 +57,9 @@ ALTER TABLE empleado
 ADD CONSTRAINT chk_apellido
 CHECK (apellido NOT like '%[^A-Za-z ]%');
 
---------------Vuelo
+--------------avion
 
-ALTER TABLE vuelo
+ALTER TABLE avion
 ADD CONSTRAINT chk_capacidad_maxima
 CHECK (cantidad_asientos > 0);
 
@@ -69,6 +69,6 @@ CHECK (precio >= 0);
 
 ALTER TABLE vuelo
 ADD CONSTRAINT chk_fecha_hora_salida
-CHECK (fecha_salida >= GETDATE());
+CHECK (fecha_hora_salida >= GETDATE());
 
 
