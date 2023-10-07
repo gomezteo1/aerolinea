@@ -85,48 +85,57 @@ VALUES (9, 23);
 INSERT INTO equipaje (id_cliente, peso)
 VALUES (10, 16);
 
+--- reservas
 
---- RESERVA
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (1, '2023-09-01');
 
--- INSERT 1
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (1, '2023-10-10', 'C');
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (2, '2023-09-02');
 
--- INSERT 2
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (2, '2023-10-12', 'P');
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (3, '2023-09-03');
 
--- INSERT 3
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (3, '2023-10-15', 'C');
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (4, '2023-09-04');
 
--- INSERT 4
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (4, '2023-10-18', 'P');
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (5, '2023-09-05');
 
--- INSERT 5
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (5, '2023-10-20', 'C');
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (6, '2023-09-06');
 
--- INSERT 6
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (6, '2023-10-22', 'P');
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (7, '2023-09-07');
 
--- INSERT 7
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (7, '2023-10-25', 'C');
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (8, '2023-09-08');
 
--- INSERT 8
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (8, '2023-10-28', 'P');
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (9, '2023-09-09');
 
--- INSERT 9
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (9, '2023-10-30', 'C');
-
--- INSERT 10
-INSERT INTO reserva (id_cliente, fecha_reserva, estado_reserva)
-VALUES (10, '2023-11-01', 'P');
+INSERT INTO
+  reserva (id_cliente, fecha_reserva)
+VALUES
+  (10, '2023-09-10');
 
 --- BOLETO
 

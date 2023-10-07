@@ -78,11 +78,11 @@ CREATE TABLE boleto
   precio MONEY NOT NULL,
   fecha_emision DATE NOT NULL
 );
-
------------------
 GO
+-----------------
+
 -- relacionadas con el empleados
--- Tipo empleado representa el cargo, pero la llame desde la tabla tripulacion
+
 CREATE TABLE tipo_empleado
 (
   id_tipo_empleado INT IDENTITY (1, 1) PRIMARY KEY,
@@ -128,15 +128,15 @@ CREATE TABLE avion
 CREATE TABLE direccion
 (
   id_direccion INT IDENTITY (1, 1) PRIMARY KEY,
-  calle VARCHAR(20) NOT NULL,
-  ciudad VARCHAR(20) NOT NULL,
+  calle VARCHAR(30) NOT NULL,
+  ciudad VARCHAR(30) NOT NULL,
   codigo_postal VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE pais
 (
   id_pais INT IDENTITY (1, 1) PRIMARY KEY,
-  nombre_pais VARCHAR(20) NOT NULL,
+  nombre_pais VARCHAR(30) NOT NULL,
   codigo_pais VARCHAR(20) NOT NULL,
   id_direccion INT,
 );
@@ -150,7 +150,7 @@ CREATE TABLE destino
 );
 GO
 
-/*Esta es la tabla que contiene la regla del negocio y la relacion de muchas tablas*/
+-- tablas sobre el vuelo
 CREATE TABLE estado_vuelo
 (
   id_estado_vuelo INT IDENTITY (1, 1) PRIMARY KEY,
@@ -179,29 +179,29 @@ CREATE TABLE vuelo
   id_tipo_vuelo INT
 );
 
+GO
 ----------------
 
-GO
 -- FORANEAS
 
 ALTER TABLE equipaje
 ADD CONSTRAINT FK_equipaje_cliente
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 
---------------reserva
+--reserva
 
 ALTER TABLE reserva
 ADD CONSTRAINT FK_reserva_cliente
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 
----------------boleto
+--boleto
 
 ALTER TABLE boleto
 ADD CONSTRAINT FK_boleto_reserva
 FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva)
 
 
-----------------tripulacion
+--tripulacion
 
 ALTER TABLE tripulacion
 ADD CONSTRAINT FK_tripulacion_empleado
@@ -211,25 +211,25 @@ ALTER TABLE tripulacion
 ADD CONSTRAINT FK_tripulacion_tipo_empleado
 FOREIGN KEY (id_tipo_empleado) REFERENCES tipo_empleado(id_tipo_empleado)
 
------------------avion
+-- avion
 
 ALTER TABLE avion
 ADD CONSTRAINT FK_avion_estado_avion
 FOREIGN KEY (id_estado_avion) REFERENCES estado_avion(id_estado_avion)
 
------------------pais
+-- pais
 
 ALTER TABLE pais
 ADD CONSTRAINT FK_pais_direccion
 FOREIGN KEY (id_direccion) REFERENCES direccion(id_direccion)
 
-----------------destino
+-- destino
 
 ALTER TABLE destino
 ADD CONSTRAINT FK_destino_pais
 FOREIGN KEY (id_pais) REFERENCES pais(id_pais)
 
-----------------vuelo
+-- vuelo
 
 ALTER TABLE vuelo
 ADD CONSTRAINT FK_vuelo_tripulacion
@@ -258,6 +258,7 @@ FOREIGN KEY (id_estado_vuelo) REFERENCES estado_vuelo(id_estado_vuelo)
 ALTER TABLE vuelo
 ADD CONSTRAINT FK_vuelo_tipo_vuelo
 FOREIGN KEY (id_tipo_vuelo) REFERENCES tipo_vuelo(id_tipo_vuelo)
+
 
 -------------- CHECKS
 
@@ -294,19 +295,20 @@ check (peso>=0)
 
 ALTER TABLE reserva
 ADD CONSTRAINT chk_fecha_reserva
-CHECK (fecha_reserva >= GETDATE());
+CHECK (YEAR(fecha_reserva) >= YEAR(GETDATE()));
 
-ALTER TABLE reserva
-ADD CONSTRAINT chk_estado_reserva
-CHECK (fecha_reserva IN ('confirmada', 'pendiente'));
 
-ALTER TABLE reserva
-ADD CONSTRAINT chk_reserva_fecha
-CHECK (fecha_reserva >= GETDATE() AND estado_reserva IN ('confirmada', 'pendiente'));
+-- ALTER TABLE reserva
+-- ADD CONSTRAINT chk_estado_reserva
+-- CHECK (fecha_reserva IN ('confirmada', 'pendiente'));
 
-ALTER TABLE reserva
-ADD CONSTRAINT chk_fecha_estado_reserva
-CHECK (estado_reserva IN ('confirmada', 'pendiente'));
+-- ALTER TABLE reserva
+-- ADD CONSTRAINT chk_reserva_fecha
+-- CHECK (fecha_reserva >= GETDATE() AND estado_reserva IN ('confirmada', 'pendiente'));
+
+-- ALTER TABLE reserva
+-- ADD CONSTRAINT chk_fecha_estado_reserva
+-- CHECK (estado_reserva IN ('confirmada', 'pendiente'));
 
 ----------- empleados
 
@@ -322,7 +324,7 @@ ALTER TABLE empleado
 ADD CONSTRAINT chk_apellido_empleado
 CHECK (apellido NOT like '%[^A-Za-z ]%');
 
---------------avion
+-- avion
 
 ALTER TABLE avion
 ADD CONSTRAINT chk_capacidad_maxima
@@ -336,8 +338,8 @@ ALTER TABLE vuelo
 ADD CONSTRAINT chk_fecha_hora_salida
 CHECK (fecha_hora_salida >= GETDATE());
 
----------- INDICES
 
+-- INDICES
 
 --Indices agrupados
 
@@ -367,7 +369,7 @@ ON reserva (id_cliente);
 CREATE NONCLUSTERED COLUMNSTORE INDEX idx_vuelo_id_destino_origen
 ON vuelo (id_destino_origen);
 
----------- DEFAULTS
+-- DEFAULTS
 
 -- cliente hasta boleto
 

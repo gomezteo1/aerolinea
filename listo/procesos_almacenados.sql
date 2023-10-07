@@ -1,3 +1,6 @@
+USE aerolinea
+GO
+
 CREATE PROCEDURE insertarCliente
     @Cedula BIGINT,
     @nombre VARCHAR(50),

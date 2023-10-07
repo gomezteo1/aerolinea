@@ -24,8 +24,7 @@ CREATE TABLE
   reserva (
     id_reserva INT IDENTITY (1, 1) PRIMARY KEY,
     id_cliente INT,
-    fecha_reserva DATE NOT NULL,
-    estado_reserva varchar(2)
+    fecha_reserva DATE NOT NULL
   );
 
 CREATE TABLE
@@ -38,8 +37,7 @@ CREATE TABLE
 
 -----------------
 -- relacionadas con el empleados
-/*no requiere piloto de momento por que tiene los mimso datos que empleado y cliente si tiene los datos diferetes*/
--- Tipo empleado representa el cargo, pero la llame desde la tabla tripulacion
+
 CREATE TABLE
   tipo_empleado (
     id_tipo_empleado INT IDENTITY (1, 1) PRIMARY KEY,
@@ -85,15 +83,15 @@ CREATE TABLE
 CREATE TABLE
   direccion (
     id_direccion INT IDENTITY (1, 1) PRIMARY KEY,
-    calle VARCHAR(20) NOT NULL,
-    ciudad VARCHAR(20) NOT NULL,
+    calle VARCHAR(30) NOT NULL,
+    ciudad VARCHAR(30) NOT NULL,
     codigo_postal VARCHAR(20) NOT NULL
   );
 
 CREATE TABLE
   pais (
     id_pais INT IDENTITY (1, 1) PRIMARY KEY,
-    nombre_pais VARCHAR(20) NOT NULL,
+    nombre_pais VARCHAR(30) NOT NULL,
     codigo_pais VARCHAR(20) NOT NULL,
     id_direccion INT,
   );

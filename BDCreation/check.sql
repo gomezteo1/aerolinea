@@ -31,19 +31,20 @@ check (peso>=0)
 
 ALTER TABLE reserva
 ADD CONSTRAINT chk_fecha_reserva
-CHECK (fecha_reserva >= GETDATE());
+CHECK (YEAR(fecha_reserva) >= YEAR(GETDATE()));
 
-ALTER TABLE reserva
-ADD CONSTRAINT chk_estado_reserva
-CHECK (fecha_reserva IN ('confirmada', 'pendiente'));
 
-ALTER TABLE reserva
-ADD CONSTRAINT chk_reserva_fecha
-CHECK (fecha_reserva >= GETDATE() AND estado_reserva IN ('confirmada', 'pendiente'));
+-- ALTER TABLE reserva
+-- ADD CONSTRAINT chk_estado_reserva
+-- CHECK (fecha_reserva IN ('confirmada', 'pendiente'));
 
-ALTER TABLE reserva
-ADD CONSTRAINT chk_fecha_estado_reserva
-CHECK (estado_reserva IN ('confirmada', 'pendiente'));
+-- ALTER TABLE reserva
+-- ADD CONSTRAINT chk_reserva_fecha
+-- CHECK (fecha_reserva >= GETDATE() AND estado_reserva IN ('confirmada', 'pendiente'));
+
+-- ALTER TABLE reserva
+-- ADD CONSTRAINT chk_fecha_estado_reserva
+-- CHECK (estado_reserva IN ('confirmada', 'pendiente'));
 
 ----------- empleados
 
