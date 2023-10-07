@@ -1,12 +1,3 @@
--- use master;
-
--- drop database if exists aerolinea;
-
--- create duse master;
-
--- drop database if exists aerolinea;
-
--- create database aerolinea;atabase aerolinea;
 
 use aerolinea;
 
