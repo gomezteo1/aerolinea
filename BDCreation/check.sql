@@ -33,18 +33,9 @@ ALTER TABLE reserva
 ADD CONSTRAINT chk_fecha_reserva
 CHECK (YEAR(fecha_reserva) >= YEAR(GETDATE()));
 
-
--- ALTER TABLE reserva
--- ADD CONSTRAINT chk_estado_reserva
--- CHECK (fecha_reserva IN ('confirmada', 'pendiente'));
-
--- ALTER TABLE reserva
--- ADD CONSTRAINT chk_reserva_fecha
--- CHECK (fecha_reserva >= GETDATE() AND estado_reserva IN ('confirmada', 'pendiente'));
-
--- ALTER TABLE reserva
--- ADD CONSTRAINT chk_fecha_estado_reserva
--- CHECK (estado_reserva IN ('confirmada', 'pendiente'));
+ALTER TABLE reserva
+ADD CONSTRAINT CHK_FechaReservaMinima
+CHECK (fecha_reserva >= '2023-01-01');
 
 ----------- empleados
 
