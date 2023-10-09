@@ -4,20 +4,18 @@
 
 #### pendientes
 
-- realizar el punto 10
-- revisar el documento de entrega
 - punto 1, 2, 3 por revisar
-- quedan pendientes dos triggers **12**
+- testear triggers **punto12**
+- punto 13 y 14
 
-## done 
+#### para la entrega
 
-- los checks tienen errores de validacion a la hora de insertar datos
-- agregar defaults **punto 5**
-- agregar indices de tipo agrupado, no agrupado y columnares **punto 7**
-
+- punto 1, 2, 3 en formato PDF (en el pdf imagen del diagrama)
+- del 4 hasta el 12 en script.sql
+- 13, 14 hace parte del plan de mantenimiento (backup de la BD)
 
 #### realizados
 
-- punto 4, 5, 6, 7, 8, 9, 11
+- punto 4, 5, 6, 7, 8, 9, 10, 11
 
 
