@@ -1,3 +1,5 @@
+USE aerolinea
+
 CREATE TRIGGER ActualizarEstadoVuelo
 ON estado_vuelo
 AFTER UPDATE
