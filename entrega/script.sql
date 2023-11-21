@@ -988,5 +988,18 @@ backup database aerolinea to disk='C:\Program Files\Microsoft SQL Server\MSSQL16
 --diferencial
 backup database aerolinea to disk='C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\aerolinea.bak' with differential
 
+USE aerolinea
+GO
 
+CREATE LOGIN usuarioDataReader
+  WITH PASSWORD = 'Test1234';
+GO
+
+CREATE USER usuarioDataReader FOR LOGIN usuarioDataReader;
+GO
+GRANT SELECT ON SCHEMA :: dbo TO usuarioDataReader;
+GO
+
+GRANT EXECUTE ON SCHEMA :: dbo TO usuarioDataReader;
+GO
 
